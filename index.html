@@ -21,6 +21,10 @@
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
+    <!-- mapbox.js -->
+    <script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -65,6 +69,7 @@
             <h3>Вільна мапа – створювати яку може кожен</h3>
             <br>
             <a href="#about" class="btn btn-dark btn-lg">Дізнайтесь більше</a>
+            <a class="text-left-bottom btn btn-dark"target="_blank" href="https://www.facebook.com/gleb.dobarin">Дніпропетровськ, День міста, 2014 &copy;Гліб Добарін</a>
         </div>
     </header>
 
@@ -74,14 +79,13 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2>Ласкаво просимо до української спільноти OpenStreetMap!</h2>
-                    <p class="lead">Вітаємо Вас на сайті української спільноти міжнародного проекту <a target="_blank" href="http://osm.org/">OpenStreetMap</a>.</p>
                 </div>
                 <div class="col-lg-12 text-justify">
-                    <p class="lead">OpenStreetMap&nbsp;– міжнародний проект метою якого є створення вільної, відкритої мапи світу!</p>
+                    <p class="lead"><a target="_blank" href="http://openstreetmap.org/">OpenStreetMap</a>&nbsp;– міжнародний проект метою якого є створення вільної, відкритої мапи світу!</p>
                     <p class="lead">Велика кількість учасників по всьому світу прямо зараз додають дані про місцевисть в якій вони живуть, допомагають наповнити мапу даними про об’єкти інфраструктури поруч з ними, приймають участь у створенні мапи для допомоги постраждалим у зонах стихійних лих, катастроф й таке інше.</p>
                     <p class="lead">Дані, зібрані учасниками проекту, є вільними, відкритими та безкоштовними. Вони отримані з відкритих джерел, <a target="_blank" href="http://www.openstreetmap.org/copyright#contributors">передані урядовими та комерційними організаціями</a>, а також зібрані в ході досліджень місцевості рядовими учасниками проекту.</p>
                     <p class="lead">OpenStreetMap&nbsp;– це <i><a target="_blank" href="http://www.openstreetmap.org/about#open-data">відкриті дані</a></i>: ви можете вільно використовувати їх для будь-яких цілей до тих пір, поки ви згадуєте <a target="_blank" href="http://www.openstreetmap.org/copyright">OpenStreetMap і його учасників</a>.</p>
-                    <p class="lead">Приймати участь у проекті може кожен, хто бажає покращити мапу. Для того, щоб почати вдосконалювати мапу потрібно <a target="_blank" href="http://www.openstreetmap.org/user/new">зареєструватись</a>. Але перед тим, як розпочати, ознайомтесь із <b>Керівництвом для початківців</b> на <a target="_blank" href="http://learnosm.org/uk/">LearnOSM</a>, що значно полегшить вам початок роботи над вдосконаленям мапи.</p>
+                    <p class="lead">Приймати участь у проекті може кожен, хто бажає покращити мапу. Для того, щоб почати вдосконалювати мапу потрібно <a target="_blank" href="http://www.openstreetmap.org/user/new">зареєструватись</a>. Перед тим, як розпочати, ознайомтесь із <b>Керівництвом для початківців</b> на <a target="_blank" href="http://learnosm.org/uk/">LearnOSM</a>, це значно полегшить вам початок роботи над вдосконаленям мапи.</p>
                 </div>
             </div>
             <!-- /.row -->
@@ -108,7 +112,7 @@
                                     <strong>Перейти до мапи</strong>
                                 </h4>
                                 <p>Для того, щоб перейти до перегляду мапи натисть на кнопку</p>
-                                <a href="#" class="btn btn-light">Вперед</a>
+                                <a href="#contact" class="btn btn-light">Вперед</a>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-6">
@@ -121,7 +125,7 @@
                                     <strong>Внесення змін</strong>
                                 </h4>
                                 <p>Знайшли помилку, відсутні дані? Перейдіть в онлайн редактор, щоб виправити це.</p>
-                                <a href="#" class="btn btn-light">Редагувати</a>
+                                <a target="_blank" href="http://www.openstreetmap.org/edit" class="btn btn-light">Редагувати</a>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-6">
@@ -134,7 +138,7 @@
                                     <strong>Завдання з мапінгу</strong>
                                 </h4>
                                 <p>Бажаєте з іншими, спільно додавати дані – перейдіть до Менеджера Завдань OSM.</p>
-                                <a href="#" class="btn btn-light">Долучитись</a>
+                                <a target="_blank" href="http://tasks.openstreetmap.org.ua/" class="btn btn-light">Долучитись</a>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-6">
@@ -147,7 +151,7 @@
                                     <strong>Контроль якості</strong>
                                 </h4>
                                 <p>Інструменти перевірки та підтримання якості наших даних.</p>
-                                <a href="#" class="btn btn-light">Перейти</a>
+                                <a target="_blank"  href="https://pavlo-dudka.github.io/osm-pg-tests/" class="btn btn-light">Перейти</a>
                             </div>
                         </div>
                     </div>
@@ -180,7 +184,7 @@
                               <h3>Контакти</h3>
                             </div>
                             <div class="portfolio-item">
-                                <a href="#">
+                                <a target="_blank"  href="http://wiki.openstreetmap.org/wiki/Uk:Contact">
                                     <img class="img-portfolio img-responsive" src="img/portfolio-1.jpg">
                                 </a>
                             </div>
@@ -190,7 +194,7 @@
                             <h3>Вікі OpenStreetMap</h3>
                           </div>
                             <div class="portfolio-item">
-                                <a href="#">
+                                <a target="_blank"  href="http://wiki.openstreetmap.org/wiki/Uk:Main_Page">
                                     <img class="img-portfolio img-responsive" src="img/portfolio-2.jpg">
                                 </a>
                             </div>
@@ -200,7 +204,7 @@
                               <div class="text-vertical-center">
                                 <h3>Форум</h3>
                               </div>
-                                <a href="#">
+                                <a target="_blank"  href="http://forum.openstreetmap.org/viewforum.php?id=40">
                                     <img class="img-portfolio img-responsive" src="img/portfolio-3.jpg">
                                 </a>
                             </div>
@@ -210,7 +214,7 @@
                               <div class="text-vertical-center">
                                 <h3>Інструменти</h3>
                               </div>
-                                <a href="#">
+                                <a target="_blank"  href="https://josm.openstreetmap.de/wiki/Uk%3AWikiStart">
                                     <img class="img-portfolio img-responsive" src="img/portfolio-4.jpg">
                                 </a>
                             </div>
@@ -232,8 +236,8 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h3>Приєднатись до спільноти OpenStreetMap.</h3>
-                    <a href="#" class="btn btn-lg btn-light">Зареєструватись!</a>
-                    <a href="#" class="btn btn-lg btn-dark">На головний сайт!</a>
+                    <a target="_blank" href="http://www.openstreetmap.org/user/new" class="btn btn-lg btn-light">Зареєструватись!</a>
+                    <a target="_blank" href="http://www.openstreetmap.org/" class="btn btn-lg btn-dark">На головний сайт!</a>
                 </div>
             </div>
         </div>
@@ -241,13 +245,20 @@
 
     <!-- Map -->
     <section id="contact" class="map">
-      <!---  <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A&amp;output=embed"></iframe> -->
-        <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.openstreetmap.org/export/embed.html?bbox=17.42431640625%2C43.96119063892024%2C38.8037109375%2C53.30462107510271&amp;layer=mapnik" style="border: 0px solid black"></iframe><br/><small><a href="http://www.openstreetmap.org/#map=6/48.850/28.114">Переглянути більшу мапу</a></small>
-        <br />
-        <!-- <small>
-            <a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A"></a>
-        </small>
-      </iframe> -->
+      <div id="map"></div>
+      <script>
+        // Provide your access token
+        L.mapbox.accessToken = 'pk.eyJ1IjoiYW5keWdvbCIsImEiOiJwSUo1SV9ZIn0.5Y4I6L-HlwNhbMMSzhU0Mg';
+        var mapboxTiles = L.tileLayer('https://{s}.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=' + L.mapbox.accessToken, {
+        attribution: 'дані &copy;<a href="http://www.openstreetmap.org/copyright">учасники OpenStreetMap</a>, мапа &copy;<a href="http://www.mapbox.com/about/maps/" target="_blank">Mapbox</a>'
+        });
+        // Create a map in the div #map
+        // var map = L.mapbox.map('map', 'mapbox.streets')
+        var map = L.map('map')
+          .addLayer(mapboxTiles)
+          .setView([48.600, 31.421], 6);
+
+      </script>
     </section>
 
     <!-- Footer -->
@@ -257,7 +268,7 @@
                 <div class="col-lg-10 col-lg-offset-1 text-center">
                     <h4><strong>Українська спільнота OpenStreetMap</strong>
                     </h4>
-                    <p>Україна<br>Поруч з вами</p>
+                    <p>Україна<br>ми поруч з вами</p>
                     <!-- <ul class="list-unstyled">
                         <li><i class="fa fa-phone fa-fw"></i> (123) 456-7890</li>
                         <li><i class="fa fa-envelope-o fa-fw"></i>  <a href="mailto:name@example.com">name@example.com</a>
