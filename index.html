@@ -252,14 +252,17 @@
         // Provide your access token
         L.mapbox.accessToken = 'pk.eyJ1IjoiYW5keWdvbCIsImEiOiJwSUo1SV9ZIn0.5Y4I6L-HlwNhbMMSzhU0Mg';
         var mapboxTiles = L.tileLayer('https://{s}.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=' + L.mapbox.accessToken, {
-        attribution: 'дані &copy;<a href="http://www.openstreetmap.org/copyright">учасники OpenStreetMap</a>, мапа &copy;<a href="http://www.mapbox.com/about/maps/" target="_blank">Mapbox</a>'
+          attribution: 'дані &copy;<a href="http://www.openstreetmap.org/copyright">учасники OpenStreetMap</a>, мапа &copy;<a href="http://www.mapbox.com/about/maps/" target="_blank">Mapbox</a>'
         });
         // Create a map in the div #map
         // var map = L.mapbox.map('map', 'mapbox.streets')
-        var map = L.map('map')
+        var map = L.map('map', {
+          scrollWheelZoom: false,
+          attributionControl: false,
+        })
           .addLayer(mapboxTiles)
           .setView([48.600, 31.421], 6);
-
+          L.control.attribution({position: 'bottomleft'}).addTo(map);
       </script>
     </section>
 
