@@ -15,6 +15,10 @@ body {
 body {
     font-family: "Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
+
+.main-title {
+  margin: -200px;
+}
 .text-left-bottom {
     position:absolute;
     left: 0px;
