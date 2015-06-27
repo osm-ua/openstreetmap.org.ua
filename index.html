@@ -279,6 +279,14 @@
           .setView([48.600, 31.421], 6);
           L.control.attribution({position: 'bottomleft'}).addTo(map);
           L.control.layers(baseMaps).addTo(map);
+          map.on('click', function() {
+            if (map.scrollWheelZoom.enabled()) {
+              map.scrollWheelZoom.disable();
+            }
+            else {
+              map.scrollWheelZoom.enable();
+            }
+          });
       </script>
     </section>
 
