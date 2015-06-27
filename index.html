@@ -252,17 +252,6 @@
         // Provide your access token
         L.mapbox.accessToken = 'pk.eyJ1IjoiYW5keWdvbCIsImEiOiJwSUo1SV9ZIn0.5Y4I6L-HlwNhbMMSzhU0Mg';
         mapboxAttribution = 'дані &copy;<a href="http://www.openstreetmap.org/copyright">учасники OpenStreetMap</a>, мапа &copy;<a href="http://www.mapbox.com/about/maps/" target="_blank">Mapbox</a>'
-        // var layers = {
-        //   'Вулиці': L.tileLayer('https://{s}.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=' + L.mapbox.accessToken, {
-        //     attribution: 'дані &copy;<a href="http://www.openstreetmap.org/copyright">учасники OpenStreetMap</a>, мапа &copy;<a href="http://www.mapbox.com/about/maps/" target="_blank">Mapbox</a>'
-        //   }),
-        //   'Рел’єф': L.tileLayer('https://{s}.tiles.mapbox.com/v4/examples.ik7djhcc/{z}/{x}/{y}.png?access_token=' + L.mapbox.accessToken, {
-        //     attribution: 'дані &copy;<a href="http://www.openstreetmap.org/copyright">учасники OpenStreetMap</a>, мапа &copy;<a href="http://www.mapbox.com/about/maps/" target="_blank">Mapbox</a>'
-        //   }),
-        //   'Супутник': L.tileLayer('https://{s}.tiles.mapbox.com/v4/examples.map-igb471ik/{z}/{x}/{y}.png?access_token=' + L.mapbox.accessToken, {
-        //     attribution: 'дані &copy;<a href="http://www.openstreetmap.org/copyright">учасники OpenStreetMap</a>, мапа &copy;<a href="http://www.mapbox.com/about/maps/" target="_blank">Mapbox</a>'
-        //   })
-        // };
         var Streets = L.tileLayer('https://{s}.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + L.mapbox.accessToken, {
           id: 'mapbox.streets',
           attribution: mapboxAttribution
