@@ -27,6 +27,11 @@
     <script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
 
+    <!-- fullscreen -->
+    <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.4/Leaflet.fullscreen.min.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.4/leaflet.fullscreen.css' rel='stylesheet' />
+
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -251,26 +256,21 @@
     <section id="contact" class="map">
       <div id="map"></div>
       <script>
-        // Provide your access token
+        // Provide access token and attribution
         L.mapbox.accessToken = 'pk.eyJ1IjoiYW5keWdvbCIsImEiOiJwSUo1SV9ZIn0.5Y4I6L-HlwNhbMMSzhU0Mg';
         mapboxAttribution = 'дані &copy;<a href="http://www.openstreetmap.org/copyright">учасники OpenStreetMap</a>, мапа &copy;<a href="http://www.mapbox.com/about/maps/" target="_blank">Mapbox</a>'
-        var Streets = L.tileLayer('https://{s}.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + L.mapbox.accessToken, {
-          id: 'mapbox.streets',
-          attribution: mapboxAttribution
-          }),
-          Outdoors = L.tileLayer('https://{s}.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + L.mapbox.accessToken, {
-            id: 'examples.ik7djhcc',
-            attribution: mapboxAttribution
-          }),
-          Sattelite = L.tileLayer('https://{s}.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + L.mapbox.accessToken, {
-            id: 'examples.map-igb471ik',
-            attribution: mapboxAttribution
-          });
+
+        // Define map layers
+        var Streets = L.mapbox.tileLayer('mapbox.streets', {attribution: mapboxAttribution}),
+            Outdoors = L.mapbox.tileLayer('examples.ik7djhcc', {attribution: mapboxAttribution}),
+            Sattelite = L.mapbox.tileLayer('examples.map-igb471ik', {attribution: mapboxAttribution});
+
         var baseMaps = {
           "Вулиці": Streets,
           "Рельєф": Outdoors,
           "Супутник": Sattelite
           };
+        var overlayMaps = {};
         // Create a map in the div #map
         // var map = L.mapbox.map('map', 'mapbox.streets')
         var map = L.map('map', {
@@ -278,9 +278,22 @@
           attributionControl: false,
         })
           .addLayer(Streets)
-          .setView([48.600, 31.421], 6);
+          .setView([48.600, 31.421], 6)
+
+          // Add geocoder control
+          .addControl(L.mapbox.geocoderControl('mapbox.places', {
+                autocomplete: true}));
+
+          // Set attribution to the bottomleft
           L.control.attribution({position: 'bottomleft'}).addTo(map);
-          L.control.layers(baseMaps).addTo(map);
+
+          // Move layers control to the topleft
+          L.control.layers(baseMaps, overlayMaps, {position: 'topleft'}).addTo(map);
+
+          // Add fullscreen control
+          L.control.fullscreen().addTo(map);
+
+          // Toggle zoom mode by mouse scrolling
           map.on('click', function() {
             if (map.scrollWheelZoom.enabled()) {
               map.scrollWheelZoom.disable();
