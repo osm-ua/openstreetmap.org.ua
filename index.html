@@ -273,9 +273,12 @@
         mapboxAttribution = 'дані &copy;<a href="http://www.openstreetmap.org/copyright">учасники OpenStreetMap</a>, мапа &copy;<a href="http://www.mapbox.com/about/maps/" target="_blank">Mapbox</a>'
 
         // Define map layers
-        var Streets = L.mapbox.tileLayer('mapbox.streets', {attribution: mapboxAttribution}),
-            Outdoors = L.mapbox.tileLayer('examples.ik7djhcc', {attribution: mapboxAttribution}),
-            Sattelite = L.mapbox.tileLayer('examples.map-igb471ik', {attribution: mapboxAttribution});
+        var
+            Streets = L.tileLayer('https://{s}.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + L.mapbox.accessToken, {
+            id: 'mapbox.streets',
+            attribution: mapboxAttribution}),
+            Outdoors = L.mapbox.tileLayer('examples.ik7djhcc'),
+            Sattelite = L.mapbox.tileLayer('examples.map-igb471ik', {maxZoom: 17});
 
         var baseMaps = {
           "Вулиці": Streets,
