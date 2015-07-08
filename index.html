@@ -277,7 +277,7 @@
             Streets = L.tileLayer('https://{s}.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + L.mapbox.accessToken, {
             id: 'mapbox.streets',
             attribution: mapboxAttribution}),
-            Outdoors = L.mapbox.tileLayer('examples.ik7djhcc'),
+            Outdoors = L.mapbox.tileLayer('matt.f714d988'),
             Sattelite = L.mapbox.tileLayer('examples.map-igb471ik', {maxZoom: 17});
 
         var baseMaps = {
@@ -302,11 +302,11 @@
           // Set attribution to the bottomleft
           L.control.attribution({position: 'bottomleft'}).addTo(map);
 
-          // Move layers control to the topleft
-          L.control.layers(baseMaps, overlayMaps, {position: 'topleft'}).addTo(map);
-
           // Add fullscreen control
           L.control.fullscreen().addTo(map);
+
+          // Move layers control to the topleft
+          L.control.layers(baseMaps, overlayMaps, {position: 'topleft'}).addTo(map);
 
           // Toggle zoom mode by mouse scrolling
           map.on('click', function() {
