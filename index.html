@@ -277,8 +277,8 @@
             Streets = L.tileLayer('https://{s}.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + L.mapbox.accessToken, {
             id: 'mapbox.streets',
             attribution: mapboxAttribution}),
-            Outdoors = L.mapbox.tileLayer('matt.f714d988'),
-            Sattelite = L.mapbox.tileLayer('examples.map-igb471ik', {maxZoom: 17});
+            Outdoors = L.mapbox.tileLayer('mapbox.outdoors'),
+            Sattelite = L.mapbox.tileLayer('mapbox.streets-satellite', {maxZoom: 17});
 
         var baseMaps = {
           "Вулиці": Streets,
