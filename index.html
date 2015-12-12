@@ -301,19 +301,25 @@
           };
 
         var
-          area_hw =   L.tileLayer.wms("http://osmapa.pl/ua?service=WMS&request=GetMap&name=B&srs=EPSG:3857", {
-            layers: 'areahighwaylow,areahighwaysurf,areanamesurf',
+          area_hw =   L.tileLayer.wms("http://osmapa.pl/de?service=WMS&request=GetMap&srs=EPSG:3857", {
+            layers: ['areahighwaylow','areahighwaysurf','areanamesurf'],
             format: 'image/png',
             transparent: true,
-            version: "1.1.1"
+            version: "1.1.1",
+            maxZoom: 20,
+            minZoom: 6,
+            name: 'Street areas'
           })
 
         var
-          area_hw_crossing = L.tileLayer.wms("http://osmapa.pl/ua?service=WMS&request=GetMap&name=P&srs=EPSG:3857",{
-            layers: 'pasy_mr',
+          area_hw_crossing = L.tileLayer.wms("http://osmapa.pl/de?service=WMS&request=GetMap&srs=EPSG:3857",{
+            layers: ['pasy_mr'],
             format: 'image/png',
             transparent: true,
-            version: "1.1.1"
+            version: "1.1.1",
+            maxZoom: 20,
+            minZoom: 16,
+            name: 'Pedestrian crossings'
         })
 
         var overlayMaps = {
