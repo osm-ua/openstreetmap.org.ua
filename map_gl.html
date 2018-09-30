@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="OpenStreetMap Ukraine official web site">
+    <meta name="author" content="">
+
+    <title>OpenStreetMap Україна</title>
+
+    <link rel=icon href=favicon.png sizes="16x16" type="image/png">
+    <!-- Mapbox GL -->
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.css' rel='stylesheet' />
+
+    <!-- Mapbox language GL-->
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-language/v0.10.0/mapbox-gl-language.js'></script>
+
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+
+  </head>
+  <body>
+    <div id='map'></div>
+    <script>
+      mapboxgl.accessToken = 'pk.eyJ1IjoiYW5keWdvbCIsImEiOiJjamxxbnc5NGswbjBhM2twbHAyenl4ZTJ3In0.65I1TlE3Y_thG1upxBCZFQ';
+      var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v9',
+        center: [31.421, 48.600], // starting position [lng, lat]
+        zoom: 5 // starting zoom
+      });
+      var language = new MapboxLanguage({defaultLanguage: 'mul'}); //name=* as default languge
+      map.addControl(language);
+    </script>
+
+
+  </body>
+</html>
