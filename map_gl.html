@@ -17,6 +17,14 @@
     <!-- Mapbox language GL-->
     <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-language/v0.10.0/mapbox-gl-language.js'></script>
 
+    <!-- Direction -->
+    <!-- <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v3.1.3/mapbox-gl-directions.js'></script>
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v3.1.3/mapbox-gl-directions.css' type='text/css' /> -->
+
+    <!-- Geocoder -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.min.js'></script>
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.css' type='text/css' />
+
     <style>
         body { margin:0; padding:0; }
         #map { position:absolute; top:0; bottom:0; width:100%; }
@@ -31,12 +39,41 @@
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v9',
         center: [31.421, 48.600], // starting position [lng, lat]
-        zoom: 5 // starting zoom
+        zoom: 5, // starting zoom
+        hash: true
       });
-      var language = new MapboxLanguage({defaultLanguage: 'mul'}); //name=* as default languge
-      map.addControl(language);
-    </script>
 
+      // Add zoom and rotation controls to the map.
+      var mapNavControls = new mapboxgl.NavigationControl();
+      map.addControl(mapNavControls, 'bottom-right');
+
+      // Add geolocate control to the map.
+      var geoLocation = new mapboxgl.GeolocateControl({
+          positionOptions: {
+              enableHighAccuracy: true
+          },
+          trackUserLocation: true
+      });
+      map.addControl(geoLocation, 'bottom-right');
+
+      // Add Fullscreen control
+      var fullscreen = new mapboxgl.FullscreenControl()
+      map.addControl(fullscreen);
+
+      // Show map labels using name=* as default language
+      var language = new MapboxLanguage({defaultLanguage: 'mul'});
+      map.addControl(language);
+
+      // Add Geocoder search field
+      var geocoder = new MapboxGeocoder({ accessToken: mapboxgl.accessToken });
+      map.addControl(geocoder, 'top-left');
+
+      // Add Direction controls
+      // var direction = new MapboxDirections({ accessToken: mapboxgl.accessToken });
+      // map.addControl(direction, 'top-left');
+
+
+    </script>
 
   </body>
 </html>
