@@ -23,14 +23,16 @@
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
-    <!-- mapbox.js -->
-    <script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
-    <link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
+    <!-- Mapbox GL -->
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.css' rel='stylesheet' />
 
-    <!-- fullscreen -->
-    <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.4/Leaflet.fullscreen.min.js'></script>
-    <link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.4/leaflet.fullscreen.css' rel='stylesheet' />
+    <!-- Mapbox language GL-->
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-language/v0.10.0/mapbox-gl-language.js'></script>
 
+    <!-- Geocoder -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.min.js'></script>
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.css' type='text/css' />
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -266,100 +268,68 @@
 
     <!-- Map -->
     <section id="contact" class="map">
-      <div id="map" title="Для увімкнення/вимкнення масштабування коліщатком клацніть по мапі"></div>
+      <div id='map' title="Для увімкнення/вимкнення масштабування коліщатком клацніть по мапі"></div>
       <script>
-        // Provide access token and attribution
-        L.mapbox.accessToken = 'pk.eyJ1IjoiYW5keWdvbCIsImEiOiJwSUo1SV9ZIn0.5Y4I6L-HlwNhbMMSzhU0Mg';
-        mapboxAttribution = 'дані &copy;<a href="http://www.openstreetmap.org/copyright">учасники OpenStreetMap</a>, мапа &copy;<a href="http://www.mapbox.com/about/maps/" target="_blank">Mapbox</a>'
-        var osm_attribution = 'Map data: &copy; <a href="http://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap contributors</a>, under ODbL | Tiles: &copy; ';
+        mapboxgl.accessToken = 'pk.eyJ1IjoiYW5keWdvbCIsImEiOiJjamxxbnc5NGswbjBhM2twbHAyenl4ZTJ3In0.65I1TlE3Y_thG1upxBCZFQ';
+        var map = new mapboxgl.Map({
+          container: 'map',
+          style: 'mapbox://styles/mapbox/streets-v9',
+          center: [31.421, 48.600], // starting position [lng, lat]
+          zoom: 5, // starting zoom
+          hash: true
+        });
 
-        // Define map layers
-        var
-            Streets = L.tileLayer('https://{s}.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + L.mapbox.accessToken,
-            {
-              id: 'mapbox.streets',
-              attribution: mapboxAttribution
-            }),
-            Outdoors = L.mapbox.tileLayer('mapbox.outdoors'),
-            Sattelite = L.mapbox.tileLayer('mapbox.streets-satellite',
-            {
-              maxZoom: 17
-            }),
-            Osmapnik = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'),
-            MapSurfer = L.tileLayer('http://korona.geog.uni-heidelberg.de/tiles/roads/x={x}&y={y}&z={z}',
-            {
-                maxZoom: 19,
-                attribution: osm_attribution + '<a href="http://giscience.uni-hd.de/" target="_blank">GIScience Research Group @ Heidelberg University</a>'
-            });
+        // Add zoom and rotation controls to the map.
+        var mapNavControls = new mapboxgl.NavigationControl();
+        map.addControl(mapNavControls, 'bottom-right');
 
-        var baseMaps = {
-          "Вулиці": Streets,
-          "Рельєф": Outdoors,
-          "Стандартний": Osmapnik,
-          "MapSurfer.NET": MapSurfer,
-          "Супутник": Sattelite
-          };
+        // Add geolocate control to the map.
+        var geoLocation = new mapboxgl.GeolocateControl({
+            positionOptions: {
+                enableHighAccuracy: true
+            },
+            trackUserLocation: true
+        });
+        map.addControl(geoLocation, 'bottom-right');
 
-        var
-          area_hw =   L.tileLayer.wms("http://osmapa.pl/de?service=WMS&request=GetMap&srs=EPSG:3857", {
-            layers: ['areahighwaylow','areahighwaysurf','areanamesurf'],
-            format: 'image/png',
-            transparent: true,
-            version: "1.1.1",
-            maxZoom: 20,
-            minZoom: 6,
-            name: 'Street areas'
-          })
+        // Add Fullscreen control
+        // var fullscreen = new mapboxgl.FullscreenControl()
+        // map.addControl(fullscreen, 'bottom-right');
 
-        var
-          area_hw_crossing = L.tileLayer.wms("http://osmapa.pl/de?service=WMS&request=GetMap&srs=EPSG:3857",{
-            layers: ['pasy_mr'],
-            format: 'image/png',
-            transparent: true,
-            version: "1.1.1",
-            maxZoom: 20,
-            minZoom: 16,
-            name: 'Pedestrian crossings'
-        })
+        // Show map labels using name=* as default language
+        var language = new MapboxLanguage({defaultLanguage: 'mul'});
+        map.addControl(language);
 
-        var overlayMaps = {
-          "дороги полігонами": area_hw,
-          "пішохідні переходи": area_hw_crossing
-        };
-        // Create a map in the div #map
-        // var map = L.mapbox.map('map', 'mapbox.streets')
-        var map = L.map('map', {
-          scrollWheelZoom: false,
-          attributionControl: false,
-        })
-          .addLayer(Streets)
-          .setView([48.600, 31.421], 6)
+        // Add Geocoder search field
+        var geocoder = new MapboxGeocoder({ accessToken: mapboxgl.accessToken });
+        map.addControl(geocoder, 'top-left');
 
-          // Add geocoder control
-          .addControl(L.mapbox.geocoderControl('mapbox.places', {
-                autocomplete: true}));
+        map.on('load', updateGeocoderProximity); // set proximity on map load
+        map.on('moveend', updateGeocoderProximity); // and then update proximity each time the map moves
 
-          // Set attribution to the bottomleft
-          L.control.attribution({position: 'bottomleft'}).addTo(map);
+        function updateGeocoderProximity() {
+          // proximity is designed for local scale, if the user is looking at the whole world,
+          // it doesn't make sense to factor in the arbitrary centre of the map
+          if (map.getZoom() > 9) {
+              var center = map.getCenter().wrap(); // ensures the longitude falls within -180 to 180 as the Geocoding API doesn't accept values outside this range
+              geocoder.setProximity({ longitude: center.lng, latitude: center.lat });
+          } else {
+              geocoder.setProximity(null);
+          }
+        }
+        // Toggle zoom mode by mouse scrolling
+        map.scrollZoom.disable();
 
-          // Add fullscreen control
-          L.control.fullscreen().addTo(map);
-
-          // Move layers control to the topleft
-          L.control.layers(baseMaps, overlayMaps, {position: 'topleft'}).addTo(map);
-
-          map.addControl(L.mapbox.shareControl());
-
-          // Toggle zoom mode by mouse scrolling
-          map.on('click', function() {
-            if (map.scrollWheelZoom.enabled()) {
-              map.scrollWheelZoom.disable();
-            }
-            else {
-              map.scrollWheelZoom.enable();
-            }
-          });
+        map.on('click', function() {
+          if (map.scrollZoom.isEnabled()) {
+            map.scrollZoom.disable();
+          }
+          else {
+            map.scrollZoom.enable();
+          }
+        });
       </script>
+
     </section>
 
     <!-- Footer -->
@@ -389,9 +359,9 @@
                         <li>
                             <a href="https://plus.google.com/u/0/109098530431025319382/"><i class="fa fa-google-plus fa-fw fa-3x"></i></a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href="http://vk.com/openstreetmap_ua"><i class="fa fa-vk fa-fw fa-3x"></i></a>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="https://github.com/osm-ua/openstreetmap.org.ua"><i class="fa fa-github fa-fw fa-3x"></i></a>
                         </li>

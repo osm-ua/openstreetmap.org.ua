@@ -62,7 +62,7 @@
 
       // Show map labels using name=* as default language
       var language = new MapboxLanguage({defaultLanguage: 'mul'});
-      map.addControl(language);
+      map.addControl(language, 'bottom-right');
 
       // Add Geocoder search field
       var geocoder = new MapboxGeocoder({ accessToken: mapboxgl.accessToken });
