@@ -1,0 +1,66 @@
+<!-- mapbox.js -->
+<script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
+
+<!-- fullscreen -->
+<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.4/Leaflet.fullscreen.min.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.4/leaflet.fullscreen.css' rel='stylesheet' />
+
+<section id="map" class="map">
+  <div id="map" title="Для увімкнення/вимкнення масштабування коліщатком клацніть по мапі"></div>
+  <script>
+    // Provide access token and attribution
+    L.mapbox.accessToken = 'pk.eyJ1IjoiYW5keWdvbCIsImEiOiJjamxxbnc5NGswbjBhM2twbHAyenl4ZTJ3In0.65I1TlE3Y_thG1upxBCZFQ';
+    mapboxAttribution = 'Дані &copy;<a href="http://www.openstreetmap.org/copyright">учасники OpenStreetMap</a>, мапа &copy;<a href="http://www.mapbox.com/about/maps/" target="_blank">Mapbox</a>'
+    var osm_attribution = 'Дані &copy; <a href="http://www.openstreetmap.org/copyright" target="_blank">учасники OpenStreetMap</a>, ODbL | Мапа: &copy; OpenStreetMap, CC BY-SA 2.0';
+    // Define map layers
+    var
+        Streets = L.tileLayer('https://{s}.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + L.mapbox.accessToken,
+        {
+          id: 'mapbox.streets',
+          attribution: mapboxAttribution
+        }),
+        Outdoors = L.mapbox.tileLayer('mapbox.outdoors'),
+        Sattelite = L.mapbox.tileLayer('mapbox.streets-satellite',
+        {
+          maxZoom: 17
+        }),
+        Osmapnik = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+        {
+          attribution: osm_attribution
+        });
+    var baseMaps = {
+      "Вулиці": Streets,
+      "Рельєф": Outdoors,
+      "Стандартний": Osmapnik,
+      "Супутник": Sattelite
+      };
+    var overlayMaps = {};
+    // Create a map in the div #map
+    var map = L.map('map', {
+      scrollWheelZoom: false,
+      attributionControl: false,
+    })
+      .addLayer(Streets)
+      .setView([48.600, 31.421], 6)
+      // Add geocoder control
+      .addControl(L.mapbox.geocoderControl('mapbox.places', {
+            autocomplete: true}));
+      // Set attribution to the bottomleft
+      L.control.attribution({position: 'bottomleft'}).addTo(map);
+      // Add fullscreen control
+      L.control.fullscreen().addTo(map);
+      // Move layers control to the topleft
+      L.control.layers(baseMaps, overlayMaps, {position: 'topleft'}).addTo(map);
+      map.addControl(L.mapbox.shareControl());
+      // Toggle zoom mode by mouse scrolling
+      map.on('click', function() {
+        if (map.scrollWheelZoom.enabled()) {
+          map.scrollWheelZoom.disable();
+        }
+        else {
+          map.scrollWheelZoom.enable();
+        }
+      });
+  </script>
+</section>
