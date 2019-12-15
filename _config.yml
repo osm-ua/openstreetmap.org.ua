@@ -1,0 +1,37 @@
+# Site settings
+title: OpenStreeMap Україна – вільна мапа, покращувати яку може кожен!
+email:
+description: > # this means to ignore newlines until "baseurl:"
+  OpenStreeMap Україна – інтернет представництво української спільноти
+  міжнародного проєкту по створенню вільної, відкритої мапи світу OpenStreetMap.
+  Дані проєкту є вільними, відкритими та безкоштовними. Дозволяється їх
+  використання як для особистих потреб так і для надання послуг з метою
+  отримання прибутку. В разі створення сервісів, що використовують дані
+  OpenStreetMap, вимагається обов'язково посилатись на проєкт. Змінені дані
+  мають повертатись в проєкт та розповсюджуватись на тих самих умовах, що й дані
+  отримані з OpenStreeMap.
+
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "" # the base hostname & protocol for your site
+
+# User setting
+owner: Українська спільнота OpenStreetMap
+email:
+facebook_username: openstreetmapua
+twitter_username: osm_ua
+github_username: osm-ua
+address:
+  - line: Україна
+  - line: Ми поруч з вами
+  # Feel free to add more lines here
+telephone:
+copyright: OpenStreetMap Україна,
+
+# API settings
+google_api_key:
+
+# Build settings
+markdown: kramdown
+
+# Analytics
+google_analytics: UA-64679388-1
