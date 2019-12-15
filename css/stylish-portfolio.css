@@ -39,6 +39,10 @@ body {
     font-weight: 700;
 }
 
+.text-vertical-center h3 {
+    /* filter: invert(1) grayscale(1) contrast(1); */
+    text-shadow: 0 0 5px lightgray;
+    }
 /* Custom Button Styles */
 
 .btn-dark {
@@ -239,6 +243,18 @@ hr.small {
 @media(max-width:768px) {
     .map {
         height: 75%;
+    }
+}
+
+@media only screen and (min-width: 540px) {
+.brnodisplay-w {
+    display: none;
+    }
+}
+
+@media only screen and (min-width: 340px) {
+.brnodisplay-n {
+    display: none;
     }
 }
 
