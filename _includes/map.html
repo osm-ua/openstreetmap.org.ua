@@ -28,6 +28,10 @@
       }), 'top-left'
     );
 
+    // Add Fullscreen control
+    var fullscreen = new mapboxgl.FullscreenControl()
+    map.addControl(fullscreen, 'top-left');
+
     // Add zoom and rotation controls to the map.
     map.addControl(new mapboxgl.NavigationControl(), 'top-left');
 
