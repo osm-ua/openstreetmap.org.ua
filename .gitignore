@@ -2,3 +2,4 @@ _site
 .DS_Store
 *.code-workspace
 Gemfile.lock
+.jekyll-cache
