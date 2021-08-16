@@ -14,14 +14,14 @@
           <li><i class="fa fa-phone fa-fw"></i> {{ site.telephone }}</li>
           {% endif%}
           {% if site.email %}
-          <li><i class="fa fa-envelope-o fa-fw"></i>  <a href="mailto:{{ site.email }}">{{ site.email }}</a>
-          {% endif%}
+          <li><i class="fa fa-envelope-o fa-fw"></i> <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+            {% endif%}
           </li>
         </ul>
         <br>
         <ul class="list-inline">
           <li>
-            <a href="#"><i class="fas fa-arrow-circle-up fa-fw fa-3x"></i></a> <!-- previously used fab fa-dribbble-->
+            <a href="#"><i class="fas fa-globe-europe fa-fw fa-3x"></i></a> <!-- previously used fab fa-dribbble-->
           </li>
           <li>
             <a href="https://facebook.com/{{ site.facebook_username }}"><i class="fab fa-facebook fa-fw fa-3x"></i></a>
@@ -36,12 +36,14 @@
             <a href="https://t.me/{{ site.telegram_username }}"><i class="fab fa-telegram fa-fw fa-3x"></i></a>
           </li>
           <li>
-            <a href="https://osmukraine.slack.com/{{ site.slack_username }}"><i class="fab fa-slack fa-fw fa-3x"></i></a>
+            <a href="https://osmukraine.slack.com/{{ site.slack_username }}"><i
+                class="fab fa-slack fa-fw fa-3x"></i></a>
           </li>
         </ul>
         <hr class="small">
         <p class="text-muted">Copyright &copy; {{ site.copyright }} 20{{ site.time | date: '%y' }}</p>
-        <p class="text-muted">Шаблон &copy; Stylish Portfolio by <a target="_blank" href="http://startbootstrap.com/template-overviews/stylish-portfolio/">Start Bootstrap</a></p>
+        <p class="text-muted">Шаблон &copy; Stylish Portfolio by <a target="_blank"
+            href="http://startbootstrap.com/template-overviews/stylish-portfolio/">Start Bootstrap</a></p>
       </div>
     </div>
   </div>
