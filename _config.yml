@@ -20,6 +20,8 @@ email:
 facebook_username: openstreetmapua
 twitter_username: osm_ua
 github_username: osm-ua
+telegram_username: osmUA
+slack_username: OSM Ukraine
 address:
   - line: Україна
   - line: Ми поруч з вами
