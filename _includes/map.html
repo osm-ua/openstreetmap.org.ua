@@ -1,9 +1,5 @@
-<!-- Mapbox GL -->
-<script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.js"></script>
-<link href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.css" rel="stylesheet" />
-<!-- Geocoder -->
-<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.min.js'></script>
-<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.css' type='text/css' />
+<script src='https://unpkg.com/maplibre-gl/dist/maplibre-gl.js'></script>
+<link href='https://unpkg.com/maplibre-gl/dist/maplibre-gl.css' rel='stylesheet' />
 
 <section
   id="map"
@@ -12,37 +8,37 @@
 >
 
   <script>
-    mapboxgl.accessToken = 'pk.eyJ1IjoiYW5keWdvbCIsImEiOiJjazR6em5kZnowY24wM2VtaXJwM3ZtNnZpIn0.-WYGQsR1QtF3jWIS2kVcMw';
-    var map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/osmua/ck4wswg1w00c81clktu2l8ekz',
-    center: [31.421, 48.600],
-    zoom: 5.3
+    var map = new maplibregl.Map({
+        style: 'https://tile.openstreetmap.org.ua/styles/osm-bright/style.json',
+        center: [31.421, 48.600],
+        zoom: 5.3,
+        container: 'map',
+        antialias: true
     });
+    map.addControl(new maplibregl.FullscreenControl(), 'top-left');
+    
+    map.addControl(new maplibregl.NavigationControl(), 'top-left');
 
-    // Add Geocoder control to the map.
-    map.addControl(
-      new MapboxGeocoder({
-        accessToken: mapboxgl.accessToken,
-        mapboxgl: mapboxgl
-      }), 'top-left'
-    );
-
-    // Add Fullscreen control
-    var fullscreen = new mapboxgl.FullscreenControl()
-    map.addControl(fullscreen, 'top-left');
-
-    // Add zoom and rotation controls to the map.
-    map.addControl(new mapboxgl.NavigationControl(), 'top-left');
-
-    // Add geolocate control to the map.
-    var geoLocation = new mapboxgl.GeolocateControl({
+    map.addControl(new maplibregl.GeolocateControl({
         positionOptions: {
             enableHighAccuracy: true
         },
         trackUserLocation: true
+    }), 'top-left');
+    
+    // Add attribution
+    map.addControl(new maplibregl.AttributionControl({
+            customAttribution: 'Дані ©Учасники OpenStreetMap',
+            compact: false
+            }));
+    
+    var scale = new maplibregl.ScaleControl({
+        maxWidth: 80,
+        unit: 'imperial'
     });
-    map.addControl(geoLocation, 'top-left');
+    map.addControl(scale);
+
+    scale.setUnit('metric');
 
     // Toggle zoom scrolling
     map.scrollZoom.disable();
