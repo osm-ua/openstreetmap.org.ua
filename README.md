@@ -4,6 +4,22 @@
 спрямуваня зацікавленої у вільних картографічних даних аудиторії до відповідних ресурсів та джерел. Більше докладної інформації на основному сайті проєкта <https://openstreetmap.org/>, а також у Вікі – <https://wiki.openstreetmap.org/>.
 
 ----
+Cайт створений на базі Ruby.
+
+Щоб запустити сервер локально потрібно виконати в конслолі наступні команди:
+приклад для **Linux system**:
+
+1) Оновлення інформації про пакет
+2) Встановлюемо ruby-bundler
+3) Встановлюемо залежності для проекту `jekyll` та `webrick`
+4) запускаемо сервер локально на `jekyll`
+```console 
+sudo apt-get update
+sudo apt install ruby-bundler
+bundle install
+jekyll serve
+```
+----
 
 Сайт створено на основі шаблона - [Start Bootstrap](http://startbootstrap.com/) - [Stylish Portfolio](http://startbootstrap.com/template-overviews/stylish-portfolio/)
 
