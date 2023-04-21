@@ -262,6 +262,11 @@ hr.small {
   height: 100%;
 }
 
+/*Tile Server */
+.tile-server {
+    background-color: #f5d499;
+    color: inherit;
+}
 /* Footer */
 
 footer {
