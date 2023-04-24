@@ -264,8 +264,13 @@ hr.small {
 
 /*Tile Server */
 .tile-server {
-    background-color: #f5d499;
-    color: inherit;
+}
+.tile-server a {
+    color: #ffffff;
+    font-weight: 500;
+}
+.tile-server a:hover {
+    /*color: rgba(248,190,109, 1);*/
 }
 /* Footer */
 
