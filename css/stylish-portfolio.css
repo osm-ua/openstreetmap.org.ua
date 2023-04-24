@@ -262,6 +262,12 @@ hr.small {
   height: 100%;
 }
 
+/*Tile Server */
+.tile-server a {
+    color: #ffffff;
+    font-weight: 500;
+}
+
 /* Footer */
 
 footer {
