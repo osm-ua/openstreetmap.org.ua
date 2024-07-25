@@ -4,7 +4,6 @@
 <section
   id="map"
   class="map"
-  title="Для увімкнення/вимкнення масштабування коліщатком клацніть по мапі"
 >
 
   <script>
@@ -14,7 +13,13 @@
         zoom: 5.3,
         container: 'map',
         antialias: true,
-        attributionControl: false
+        attributionControl: false,
+        cooperativeGestures: true,
+        locale: {
+            'CooperativeGesturesHandler.WindowsHelpText': 'Використовуйте Ctrl + прокрутку, щоб змінти масштаб мапи.',
+            'CooperativeGesturesHandler.MacHelpText': 'Використовуйте ⌘ + прокрутку, щоб змінти масштаб мапи.',
+            'CooperativeGesturesHandler.MobileHelpText': 'Використовуйте два пальці для переміщення мапи.',
+        },
     });
     map.addControl(new maplibregl.FullscreenControl(), 'top-left');
     
@@ -40,16 +45,6 @@
     map.addControl(scale);
 
     scale.setUnit('metric');
-
-    // Toggle zoom scrolling
-    map.scrollZoom.disable();
-    map.on('click', function() {
-      if (map.scrollZoom.isEnabled()) {
-        map.scrollZoom.disable()
-      } else {
-        map.scrollZoom.enable()
-      }
-    });
 
   </script>
 </section>
