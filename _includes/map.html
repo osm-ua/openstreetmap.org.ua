@@ -1,12 +1,12 @@
-<script src='https://unpkg.com/maplibre-gl/dist/maplibre-gl.js'></script>
-<link href='https://unpkg.com/maplibre-gl/dist/maplibre-gl.css' rel='stylesheet' />
+<link href='https://unpkg.com/maplibre-gl@6.0.0/dist/maplibre-gl.css' rel='stylesheet' />
 
 <section
   id="map"
   class="map"
 >
 
-  <script>
+  <script type="module">
+    import * as maplibregl from 'https://unpkg.com/maplibre-gl@6.0.0/dist/maplibre-gl.mjs';
     var map = new maplibregl.Map({
         style: 'https://tile.openstreetmap.org.ua/styles/osm-bright/style.json',
         center: [31.421, 48.600],
@@ -16,8 +16,8 @@
         attributionControl: false,
         cooperativeGestures: true,
         locale: {
-            'CooperativeGesturesHandler.WindowsHelpText': 'Використовуйте Ctrl + прокрутку, щоб змінти масштаб мапи.',
-            'CooperativeGesturesHandler.MacHelpText': 'Використовуйте ⌘ + прокрутку, щоб змінти масштаб мапи.',
+            'CooperativeGesturesHandler.WindowsHelpText': 'Використовуйте Ctrl + прокрутку, щоб змінити масштаб мапи.',
+            'CooperativeGesturesHandler.MacHelpText': 'Використовуйте ⌘ + прокрутку, щоб змінити масштаб мапи.',
             'CooperativeGesturesHandler.MobileHelpText': 'Використовуйте два пальці для переміщення мапи.',
         },
     });

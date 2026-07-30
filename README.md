@@ -13,12 +13,14 @@ Cайт створений на базі Ruby.
 2) Встановлюемо ruby-bundler
 3) Встановлюемо залежності для проекту `jekyll` та `webrick`
 4) запускаемо сервер локально на `jekyll`
-```console 
+
+```console
 sudo apt-get update
 sudo apt install ruby-bundler
 bundle install
 jekyll serve
 ```
+
 ----
 
 Сайт створено на основі шаблона - [Start Bootstrap](http://startbootstrap.com/) - [Stylish Portfolio](http://startbootstrap.com/template-overviews/stylish-portfolio/)

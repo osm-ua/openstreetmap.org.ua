@@ -14,6 +14,134 @@ body {
 
 body {
     font-family: "Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+}
+
+/* Bootstrap 3 compatibility overrides for BS5 migration */
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.1;
+}
+h2 { font-size: 30px; }
+h3 { font-size: 24px; }
+h4 { font-size: 18px; }
+
+.lead {
+    font-size: 21px;
+    line-height: 1.4;
+}
+
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Buttons */
+.btn-lg {
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.3333333;
+}
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+.btn-xs {
+    padding: 1px 5px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+/* Container - replicate BS3 fixed-width behavior */
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: none;
+}
+@media (min-width: 768px) {
+    .container { width: 750px; }
+}
+@media (min-width: 992px) {
+    .container { width: 970px; }
+}
+@media (min-width: 1200px) {
+    .container { width: 1170px; }
+}
+
+/* Gutters - replicate BS3 30px gutter */
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.row > [class*="col-"] {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+/* List inline - replicate BS3 behavior (BS5 requires .list-inline-item class) */
+.list-inline {
+    margin-left: -5px;
+}
+.list-inline > li {
+    display: inline-block;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+/* Restore BS3 paragraph bottom margin */
+p {
+    margin: 0 0 10px;
+}
+.lead {
+    margin-bottom: 20px;
+}
+
+/* Restore BS3 heading margins */
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* Restore text-justify (removed in BS5) */
+.text-justify {
+    text-align: justify !important;
+}
+
+/* Preserve Bootstrap 3 primary color (BS5 default is brighter #0d6efd) */
+:root {
+    --bs-primary: #337ab7;
+    --bs-primary-rgb: 51, 122, 183;
+    --bs-link-color: #337ab7;
+    --bs-link-color-rgb: 51, 122, 183;
+    --bs-link-hover-color: #23527c;
+}
+.bg-primary {
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)) !important;
+    color: #fff;
+}
+
+/* Restore BS3 styling for bg-primary sections */
+.bg-primary h2,
+.bg-primary h3,
+.bg-primary h4,
+.bg-primary p,
+.bg-primary .text-muted,
+.bg-primary .fa-stack,
+.bg-primary .service-item {
+    color: #fff;
+}
+.bg-primary a:not(.btn) {
+    color: #fff;
+}
+.text-primary {
+    color: #337ab7 !important;
 }
 
 .main-title {
@@ -47,6 +175,7 @@ body {
 
 .btn-dark {
     border-radius: 0;
+    border: none;
     color: #fff;
     background-color: rgba(0,0,0,0.4);
 }
@@ -60,6 +189,7 @@ body {
 
 .btn-light {
     border-radius: 0;
+    border: none;
     color: #333;
     background-color: rgb(255,255,255);
 }
@@ -75,6 +205,8 @@ body {
 
 hr.small {
     max-width: 100px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Side Menu */
